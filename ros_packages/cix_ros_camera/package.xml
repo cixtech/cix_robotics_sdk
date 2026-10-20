@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>cix_ros_camera</name>
+  <version>0.1.0</version>
+  <description>
+    ROS 2 camera package for the CIX ISP pipeline. Captures
+    frames over V4L2 with true zero-copy dmabuf transport — image data is never
+    memcpy'd across process boundaries when the broker runs.
+
+    Features:
+    - Pure ROS 2 Type Adapter
+    - V4L2 dmabuf capture via EXPBUF (no isp_app linkage)
+    - True zero-copy for intra-process composable nodes
+    - Graceful memcpy fallback for inter-process
+    - UDS broker for true inter-process fd sharing (SCM_RIGHTS)
+  </description>
+  <maintainer email="noreply@cixtech.com">CIX Robotics team</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake_auto</buildtool_depend>
+
+  <depend>cix_ros_dmabuf</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

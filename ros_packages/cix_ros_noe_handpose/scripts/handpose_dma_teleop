@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+# Copyright 2026 Cix Technology Group Co., Ltd.
+# SPDX-License-Identifier: Apache-2.0
+"""ros2 run entry point for the Python handpose inference node."""
+from cix_ros_noe_handpose.handpose_dma_teleop import main
+
+if __name__ == '__main__':
+    main()

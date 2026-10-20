@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>cix_ros_dmabuf</name>
+  <version>0.1.0</version>
+  <description>
+    Cross-process dmabuf zero-copy transport for ROS 2. Provides the
+    cix_ros_dmabuf_broker (UDS + SCM_RIGHTS fd relay), C++ BrokerClient /
+    DmaBuffer headers, and the matching Python client, so any publisher or
+    subscriber of sensor_msgs/Image can move pixels as dmabuf fds instead of
+    copying them through DDS. See the ";dmabuf_handle=N" encoding convention
+    documented in README.md.
+  </description>
+  <maintainer email="noreply@cixtech.com">CIX Robotics team</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

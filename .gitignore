@@ -1,0 +1,49 @@
+# colcon / ROS 2 build artifacts (do not commit)
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+*$pyclass
+*.egg-info/
+.eggs/
+dist/
+
+# C/C++ build by-products
+*.so
+*.o
+*.a
+
+# deb build artifacts
+*.deb
+out/
+
+# editors / OS
+.idea/
+.vscode/
+.cursor/
+.claude/
+.clangd/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# coverage / test
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Model weights (AGPL-3.0 Ultralytics) - never commit; see demos/*/NOTICE
+*.pt
+
+# NPU-compiled YOLO models (AGPL-3.0, derived from Ultralytics checkpoints) -
+# not distributed in this repo; fetch with
+# ros_packages/cix_ros_noe_yolo/scripts/download_models.sh (ModelScope)
+ros_packages/cix_ros_noe_yolo/model/*.cix
+
+# Internal analysis notes - never commit
+docs/IMPROVEMENT_ANALYSIS.md

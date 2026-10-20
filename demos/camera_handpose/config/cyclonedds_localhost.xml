@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Cyclone DDS config for the camera_handpose demo: localhost-only, NO multicast.
+  All discovery and data stay on 127.0.0.1. Prevents the ~54MB/s image stream
+  from flooding the LAN. Source this via CYCLONEDDS_URI in run_demo.sh.
+-->
+<CycloneDDS xmlns="https://cdds.io/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://cdds.io/config https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
+  <Domain id="any">
+    <General>
+      <AllowMulticast>false</AllowMulticast>
+    </General>
+    <!-- Shared-memory transport: same-host processes exchange large payloads
+         (the 0.69 MB/frame debug_image) via Iceoryx shared memory instead of
+         serializing -> loopback socket -> deserializing. Eliminates the
+         per-frame deserialization that capped the debug_image subscription
+         rate at ~17 fps. Requires Cyclone DDS built with SHM (DDS_HAS_SHM;
+         libddsc on this board exports dds_is_shared_memory_available). Note
+         the element is <Enable> (not <Enabled>) in Cyclone 0.10.x. -->
+    <SharedMemory>
+      <Enable>true</Enable>
+    </SharedMemory>
+    <Discovery>
+      <Peers>
+        <Peer Address="localhost"/>
+      </Peers>
+      <ParticipantIndex>auto</ParticipantIndex>
+    </Discovery>
+  </Domain>
+</CycloneDDS>
